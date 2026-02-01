@@ -18,6 +18,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow: hidden;
 }
 
 .card{
@@ -25,8 +26,9 @@ body{
     padding:32px 24px;
     border-radius:22px;
     text-align:center;
-    width:330px;
+    width:340px;
     box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
 }
 
 .emoji{
@@ -54,6 +56,7 @@ button{
     cursor:pointer;
     position:absolute;
     font-weight:600;
+    transition: 0.2s;
 }
 
 #yesBtn{
@@ -78,12 +81,22 @@ button{
     font-size:22px;
     font-weight:700;
     color:#ff4f7b;
+    margin-top: 10px;
 }
 
 .meme{
-    margin-top:10px;
+    margin-top:15px;
     font-size:15px;
     color:#333;
+    line-height: 1.5;
+}
+
+.victory-gif {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 12px;
+    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 </style>
 </head>
@@ -107,21 +120,26 @@ const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const card = document.getElementById("card");
 
-// dodge effect
+// dodge effect for the No button
 noBtn.addEventListener("mouseover", () => {
     const x = Math.random()*220 - 110;
     const y = Math.random()*120 - 60;
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-// yes click
+// yes click action
 yesBtn.addEventListener("click", () => {
     card.innerHTML = `
-        <div class="emoji">💍💖😝</div>
+        <div class="emoji">💖😝</div>
         <div class="final">SHE SAID YES 😍</div>
+        
+        <img src="https://media.tenor.com/7Yf_79p8T68AAAAM/yess-yes.gif" 
+             alt="Victory" 
+             class="victory-gif">
+
         <div class="meme">
             Arnav secured Valentine 😎🔥<br>
-            <b>Prernu + Arnav 💕</b>
+            <b style="font-size: 1.2em; color: #ff4f7b;">Prernu + Arnav 💕</b>
         </div>
     `;
 });
